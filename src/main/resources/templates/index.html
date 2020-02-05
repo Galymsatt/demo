@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Toylar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<h5 class="container offset">Categories</h5>
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-2 mr-5">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Edit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each = "c : ${categories}">
+                    <th th:text = "${c.id}" scope="row"></th>
+                    <td th:text = "${c.name}" ></td>
+                    <td><a th:href = "@{'/edit/'+${c.id}}">Edit</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <form action="/addCategory" method="post">
+                <div class="form-group">
+                    <label>Add category</label>
+                    <input type="text" name="category" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+</div>
+
+</body>
+</html>

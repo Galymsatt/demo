@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Toy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<h5 class="container offset" th:text="${toy.name}"></h5>
+<h5 >Categorie:</h5>
+<h5 class="container offset" th:text="${toy.categories.name}"></h5>
+<div class="container">
+
+        <div>
+
+            <div class="mb-5 col-4">
+                <form action="/editToy" method="post">
+                    <input type="hidden" name="id" th:value="${toy.id}">
+                    <div class="form-group">
+                        <label>Toy</label>
+                        <input type="text" name="toy" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" name="toyCategoryId">
+                            <option selected>Choose</option>
+                            <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price <th: text="${toy.price}"></th:></label>
+                        <input type="number" name="price" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Edit Toy</button>
+                </form>
+            </div>
+        </div>
+
+
+    <div>
+
+    </div>
+</div>
+
+</body>
+</html>

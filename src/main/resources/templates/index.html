@@ -8,7 +8,7 @@
 <h5 class="container offset">Categories</h5>
 <div class="container">
     <div class="row mb-4">
-        <div class="col-2 mr-5">
+        <div class="col-4 mr-5">
             <table class="table">
                 <thead>
                 <tr>
@@ -37,8 +37,48 @@
         </div>
     </div>
 
+    <div class="mb-5 col-4">
+        <form action="/addToy" method="post">
+            <!--<input type="hidden" name="id" th:value="${categories.id}">-->
+            <div class="form-group">
+                <label>Toy</label>
+                <input type="text" name="toy" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select class="form-control" name="toyCategoryId">
+                    <option selected>Choose</option>
+                    <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="number" name="price" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Toy</button>
+        </form>
+    </div>
     <div>
-
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">CATEGORY</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">EDIT</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each = "t : ${toys}">
+                <th scope="row" th:text = "${t.id}"></th>
+                <td th:text = "${t.name}"></td>
+                <td th:text = "${t.categories.name}"> KZT</td>
+                <td th:text = "${t.price}"></td>
+                <td><a th:href = "@{'/editToyPage/'+${t.id}}">Edit</a></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 

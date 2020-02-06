@@ -5,9 +5,7 @@
 </head>
 <body>
 
-<h5 class="container offset" th:text="${toy.name}"></h5>
-<h5 >Categorie:</h5>
-<h5 class="container offset" th:text="${toy.categories.name}"></h5>
+<h5 class="container offset-2 mt-5">Toy</h5>
 <div class="container">
 
         <div>
@@ -16,18 +14,18 @@
                 <form action="/editToy" method="post">
                     <input type="hidden" name="id" th:value="${toy.id}">
                     <div class="form-group">
-                        <label>Toy</label>
+                        <p>Toy is: <span th:text="${toy.categories.name}"></span></p>
                         <input type="text" name="toy" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label>Category</label>
+                        <p>Category is: <span th:text="${toy.categories.name}"></span></p>
                         <select class="form-control" name="toyCategoryId">
                             <option selected>Choose</option>
                             <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Price <th: text="${toy.price}"></th:></label>
+                        <p>Price is: <span th:text="${toy.price}"></span></p>
                         <input type="number" name="price" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Edit Toy</button>
